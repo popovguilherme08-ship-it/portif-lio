@@ -1,0 +1,191 @@
+/*----------------VARIÁVEIS GLOBAIS-----------------*/
+:root {
+    /*Configuração da Fonte*/
+    --fonte-texto: "Tahoma";
+    --fonte-titulo: "Space Grotesk";
+    --fonte-mono: "JetBrains Mono";
+
+    /*Cores*/
+    --cor-texto-variacao: #496949;
+    --cor-borda: #be7b7b;
+    --cor-fundo: #6e0101;
+    --cor-titulo-tag: #507c63;
+    --cor-texto-suave: #868fa1;
+    --cor-clara: #afc7b9;
+}
+/*--------------------------------*/
+
+*{
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: var(--fonte-texto);
+}
+
+/*Limpa a configuração padrão dos links feitas pelo navegador*/
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/*Estilização padrão dos títulos tipo "tag HTML" de cada seção*/
+.tag-secao{
+    display:inline-block;
+    font-family: var(--fonte-mono);
+    font-size:14px;
+    color: var(--cor-titulo-tag);
+    background-color: rgba(82, 110, 107, 0.1);
+    border-radius: 6px; /*Bordas arredondadas*/
+    margin-bottom: 16px; /*Margem inferior*/
+    padding: 4px 12px;  /*Espaçamento topo e direita*/
+}
+
+/*Estilização de BOTÕES: dois estilos*/
+.botao{
+    display: inline-block;
+    font-family: var(--fonte-texto);
+    font-size: 16px;
+    font-weight: 600; /*Negrito*/
+    padding: 12px 28px; /*Espaçamento no topo e na direita*/
+    border-radius: 999px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.botao:hover{
+    transform: translatey(-4px); /*Efeito que move o botão para cima quando passa o mouse*/
+}
+.botao-primario{
+    background-color: var(--cor-texto-variacao);
+    color: #ffffff;
+    box-shadow: 0 8px 20px rgba(15,157,139,0.35);
+}
+./* Botão com preenchimento da esquerda para a direita */
+.botao-deslizante {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.botao-deslizante::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background-color: var(--cor-clara); /* Cor que vai preencher no hover */
+  transition: left 0.3s ease;
+  z-index: -1;
+}
+
+.botao-deslizante:hover::before {
+  left: 0;
+}
+
+.botao-deslizante:hover {
+  color: var(--cor-texto-variacao); /* Cor do texto quando o fundo preencher */
+}
+
+.botao-secundario{
+    border: 2px solid var(--cor-clara); /*Borda do botão*/
+}
+.botao-secundario:hover{ /*Botao Layout 2 quando o mouse passa em cima*/
+    border-color: var(--cor-texto-variacao); /*Cor da borda do botão*/
+    color: var(--cor-texto-variacao); /*Cor da fonte*/
+}
+
+/*--------------CABEÇALHO-----------------*/
+.nome{
+    font-size: 28px; /*Define o tamanho da fonte*/
+    font-weight: bold; /*Fonte em negrito*/
+}
+.nome span{
+    color: var(--cor-texto-variacao); /*Define cor do texto*/
+}
+.cabecalho{
+    background-color: rgba(245,247,250,0.85); /*Define a cor de fundo com o 0.85 aplicando uma pequena transparência*/
+    backdrop-filter: blur(8px); /*Aplica o efeito blur ao passar o conteúdo por trás*/
+    position: sticky; /*Define a posição "parada" para o cabeçalho, sem rolagem*/
+    z-index: 100; /*Trás o cabeçalho pra frente pro conteúdo passar atrás*/
+    top: 0; /*Define que o cabeçalho ficará parado no topo*/
+    border-bottom: 1px solid var(--cor-borda); /*Cria uma borda inferior no cabeçalho*/
+}
+.cabecalho .container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100px;
+}
+.menu {/*Estilização geral do menu*/
+    display: flex;
+    gap: 32px;
+}
+
+.menu a{ /*Estilização específica dos links do menu*/
+    font-size: 24px;
+    position: relative;
+    padding-bottom: 4px;
+}
+.menu a::after{ /*Efeito do sublinhado animado*/
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0%;
+    height: 2px;
+    background-color: var(--cor-texto-variacao);
+    transition: width 0.25s ease;
+}
+.menu a:hover::after{ /*Efeito do sublinhado animado*/
+    width: 100%;
+}
+/*-------------------------------*/
+
+/*--------------APRESENTAÇÃO--------------*/
+.apresentacao{
+    padding: 96px;
+    background-color: var(--cor-fundo);
+}
+.apresentacao .container{
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 48px;
+    align-items: center;
+}
+.apresentacao-titulo{
+    font-family: var(--fonte-titulo);
+    font-size: 40px;
+    margin-bottom: 16px;
+}
+.apresentacao-titulo .destaque{
+    color:var(--cor-texto-variacao);
+}
+.apresentacao-cargo{
+    font-family: var(--fonte-mono);
+    color: var(--cor-texto-suave);
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+.apresentacao-bio{
+    color: var(--cor-texto-suave);
+    font-size: 16px;
+    max-width: 480px; /*Tamanho máximo do elemento*/
+    margin-bottom: 32px; /*Margem inferior*/
+    line-height: 1.5; /*Espaçamento entre linhas*/
+}
+.apresentacao-foto{
+    position: relative;
+}
+.apresentacao-foto img{
+    border-radius: 24px; /*Bordas arredondadas*/
+    background-color: rgba(245,247,250,0.85);
+}
+.apresentacao-botoes{
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+
+
+
